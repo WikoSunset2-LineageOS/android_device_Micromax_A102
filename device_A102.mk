@@ -4,11 +4,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/kingzone/k1_turbo/k1_turbo-vendor.mk)
+$(call inherit-product-if-exists, vendor/Micromax/A102/A102-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/kingzone/k1_turbo/overlay
+DEVICE_PACKAGE_OVERLAYS += device/Micromax/A102/overlay
 
-LOCAL_PATH := device/kingzone/k1_turbo
+LOCAL_PATH := device/Micromax/A102
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else
@@ -20,11 +20,11 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.mt6592
+    lights.mt6572
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.primary.mt6592 \
+    audio.primary.mt6572 \
     audio_policy.default \
     audio.a2dp.default \
     audio.usb.default \
@@ -49,11 +49,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libbt-vendor
 
-# GSM
-PRODUCT_PACKAGES += \
-    gsm0710muxd \
-    gsm0710muxdmd2
-
 # GPS
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
@@ -72,11 +67,11 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/fstab.mt6592:root/fstab.mt6592 \
-    $(LOCAL_PATH)/rootdir/init.mt6592.rc:root/init.mt6592.rc \
+    $(LOCAL_PATH)/rootdir/fstab.mt6572:root/fstab.mt6572 \
+    $(LOCAL_PATH)/rootdir/init.mt6572.rc:root/init.mt6572.rc \
     $(LOCAL_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
-    $(LOCAL_PATH)/rootdir/init.recovery.mt6592.rc:root/init.recovery.mt6592.rc \
-    $(LOCAL_PATH)/rootdir/init.mt6592.usb.rc:root/init.mt6592.usb.rc \
+    $(LOCAL_PATH)/rootdir/init.recovery.mt6572.rc:root/init.recovery.mt6572.rc \
+    $(LOCAL_PATH)/rootdir/init.mt6572.usb.rc:root/init.mt6572.usb.rc \
     $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
     $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
     $(LOCAL_PATH)/rootdir/init.charging.rc:root/init.charging.rc \
@@ -84,7 +79,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
     $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
     $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab \
-    $(LOCAL_PATH)/rootdir/ueventd.mt6592.rc:root/ueventd.mt6592.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.mt6572.rc:root/ueventd.mt6572.rc \
     $(LOCAL_PATH)/rootdir/sbin/busybox:root/sbin/busybox \
     $(LOCAL_KERNEL):kernel
 
@@ -110,21 +105,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
-# NFC
-PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
-    nfcstackp \
-    libmtknfc_dynamic_load_jni \
-    libnfc_mt6605_jni \
-    Nfc \
-    Tag
-
-PRODUCT_COPY_FILES += \
-    packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
-
 # Torch
 PRODUCT_PACKAGES += \
     Torch
@@ -140,10 +120,6 @@ PRODUCT_PACKAGES += \
     libfmcust \
     libmtkplayer
 
-# Smart Cover
-PRODUCT_PACKAGES += \
-    SmartCover
-
 # Camera
 PRODUCT_PACKAGES += \
     Snap
@@ -155,10 +131,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_k1_turbo
-PRODUCT_DEVICE := k1_turbo
+PRODUCT_NAME := full_A102
+PRODUCT_DEVICE := A102
 
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
+TARGET_SCREEN_HEIGHT := 854
+TARGET_SCREEN_WIDTH := 480
 
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-512-dalvik-heap.mk)

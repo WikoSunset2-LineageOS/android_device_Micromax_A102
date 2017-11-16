@@ -1,8 +1,7 @@
-import init.mt6592.usb.rc
+import init.mt6572.usb.rc
 import init.modem.rc
 
 on init
-    export LD_PRELOAD /system/lib/libxlog.so
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
 
@@ -23,8 +22,8 @@ on init
     chmod 0644 /dev/ion
 
     # TODO: fix system apps run with unknown user resume 0660
-    chmod 0666 /dev/mali
-    chown system graphics /dev/mali
+    chmod 0666 /dev/mali0
+    chown system graphics /dev/mali0
 
     chmod 0660 /dev/graphics/fb0
     chown system graphics /dev/graphics/fb0
@@ -101,15 +100,12 @@ on init
 
     # Camera
     chmod 0660 /dev/camera-sysram
-    chmod 0664 /dev/camera-isp
+    chmod 0660 /dev/camera-isp
     chmod 0660 /dev/camera-pipemgr
     chmod 0660 /dev/kd_camera_hw
     chmod 0660 /dev/kd_camera_flashlight
     chmod 0660 /dev/kd_camera_hw_bus2
     chmod 0660 /dev/FM50AF
-    chmod 0660 /dev/DW9714AF
-    chmod 0660 /dev/DW9718AF
-    chmod 0660 /dev/OV8825AF
     chmod 0660 /dev/CAM_CAL_DRV
 
     chown system camera /dev/camera-sysram
@@ -119,9 +115,6 @@ on init
     chown system camera /dev/kd_camera_flashlight
     chown system camera /dev/kd_camera_hw_bus2
     chown system camera /dev/FM50AF
-    chown system camera /dev/DW9714AF
-    chown system camera /dev/DW9718AF
-    chown system camera /dev/OV8825AF
     chown system camera /dev/CAM_CAL_DRV
 
     chown system system /dev/RT_Monitor
@@ -267,11 +260,6 @@ on post-fs-data
 
     mkdir /dev/radio 0770 radio radio
 
-    # NFC
-    chmod 0666 /dev/mt6605
-    chown system system /dev/mt6605
-    mkdir /data/nfc_socket 0771 nfc radio
-
 on post-fs
     exec /system/xbin/mknod /dev/wmtWifi c 153 0
     chmod 0660 /dev/wmtWifi
@@ -336,7 +324,7 @@ on fs
     mkdir /protect_f 0771 system system
     mkdir /protect_s 0771 system system
 
-    mount_all /fstab.mt6592
+    mount_all /fstab.mt6572
     #setprop ro.crypto.fuse_sdcard true
 
     write /proc/bootprof "INIT:NAND:Mount_END"

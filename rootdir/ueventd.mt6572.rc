@@ -17,9 +17,11 @@
 /dev/dkb                  0660   root       system
 /dev/seccfg               0660   root       system
 /dev/pro_info             0660	 root	    system
+/dev/logo				  0660 	 root 		system
 /dev/otp 		  0660	 root	    nvram
 /dev/nvram 		   0660	 root	    system
 /dev/misc		   0660	 root	    system
+/dev/misc2		   0660	 root	    system
 /dev/block/mmcblk0	   0660	 root	    system
 /dev/block/mmcblk0boot0	   0660	 root	    system
 
@@ -149,7 +151,7 @@
 /dev/ttyRB*     0660    radio   radio
 
 # Mali node
-/dev/mali                0666    system graphics
+/dev/mali0                0666    system graphics
 
 #MTK In-House TEE
 /dev/trustzone            0660   root       drmrpc
@@ -159,3 +161,5 @@
 /dev/touch              0660   root       system
 /dev/hotknot             0660    root system
 
+#powerkey monitor hang
+/dev/kick_powerkey        0600   system     system
