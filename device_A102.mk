@@ -17,7 +17,7 @@ endif
 
 PRODUCT_PACKAGES += \
     libxlog \
-	libmtk_symbols
+    libmtk_symbols
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -138,4 +138,4 @@ PRODUCT_DEVICE := A102
 TARGET_SCREEN_HEIGHT := 854
 TARGET_SCREEN_WIDTH := 480
 
-$(call inherit-product, frameworks/native/build/phone-xhdpi-512-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
