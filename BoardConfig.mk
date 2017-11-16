@@ -82,7 +82,7 @@ WIFI_DRIVER_FW_PATH_AP:=AP
 WIFI_DRIVER_FW_PATH_P2P:=P2P
 
 # Blobs to preload
-TARGET_LDPRELOAD := libxlog.so
+TARGET_LDPRELOAD := libxlog.so:libmtk_symbols.so
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
